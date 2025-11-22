@@ -209,30 +209,25 @@ res_P21b <- results(dds, contrast = c("time", "P21", "P14"))
 ## Define stage markers via bidirectional contrasts
 ## (log2FC > 1, padj < 0.05, baseMean >= 5)
 P7_markers <- intersect(
-  rownames(res_P7[ which(res_P7$log2FoldChange  > 1 &
-                          res_P7$padj          < 0.05 &
+  rownames(res_P7[ which(res_P7$log2FoldChange  >  0.9 &
+                          res_P7$pvalue         < 0.05 &
                           res_P7$baseMean     >= 5 ), ]),
-  rownames(res_P7b[which(res_P7b$log2FoldChange > 1 &
-                          res_P7b$padj         < 0.05 &
-                          res_P7b$baseMean    >= 5 ), ])
+  rownames(res_P7b[which(res_P7b$log2FoldChange > 0.9 &
+                          res_P7b$pvalue        < 0.05 ), ])
 )
 
 P14_markers <- intersect(
-  rownames(res_P14a[which(res_P14a$log2FoldChange > 1 &
-                           res_P14a$padj         < 0.05 &
-                           res_P14a$baseMean    >= 5 ), ]),
+  rownames(res_P14a[which(res_P14a$log2FoldChange > 0.9 &
+                           res_P14a$pvalue        < 0.05 ), ]),
   rownames(res_P14b[which(res_P14b$log2FoldChange > 1 &
-                           res_P14b$padj         < 0.05 &
-                           res_P14b$baseMean    >= 5 ), ])
+                           res_P14b$pvalue        < 0.05 ), ])
 )
 
 P21_markers <- intersect(
-  rownames(res_P21a[which(res_P21a$log2FoldChange > 1 &
-                           res_P21a$padj         < 0.05 &
-                           res_P21a$baseMean    >= 5 ), ]),
+  rownames(res_P21a[which(res_P21a$log2FoldChange > 0.9 &
+                           res_P21a$pvalue        < 0.05), ]),
   rownames(res_P21b[which(res_P21b$log2FoldChange > 1 &
-                           res_P21b$padj         < 0.05 &
-                           res_P21b$baseMean    >= 5 ), ])
+                           res_P21b$pvalue         < 0.05  ), ])
 )
 ```
 
